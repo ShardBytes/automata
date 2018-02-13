@@ -36,21 +36,36 @@
             android:paddingTop="20dip"
             android:progress="30" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
             android:background="#262626">
 
             <com.github.lzyzsd.circleprogress.CircleProgress
                 android:id="@+id/circle_progress"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="40dp"
                 android:scaleX="2"
                 android:scaleY="2"
-                app:circle_progress="20" />
-        </RelativeLayout>
+                app:circle_finished_color="#ef2ba1"
+                app:circle_progress="20"
+                app:circle_unfinished_color="#444" />
+
+            <Button
+                android:id="@+id/timerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:minHeight="70dp"
+                android:minWidth="200dp"
+                android:text="Button" />
+        </LinearLayout>
 
     </LinearLayout>
 

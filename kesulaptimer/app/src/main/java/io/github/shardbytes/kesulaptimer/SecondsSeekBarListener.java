@@ -11,11 +11,11 @@ public class SecondsSeekBarListener implements SeekBar.OnSeekBarChangeListener {
 
     private SeekBar bar;
     private TextView secondsText;
-    private Seconds secs;
+    private SecondsPredefined secs;
 
     private int progressBefore;
 
-    public SecondsSeekBarListener(SeekBar bar, TextView text, Seconds secs) {
+    public SecondsSeekBarListener(SeekBar bar, TextView text, SecondsPredefined secs) {
         this.bar = bar;
         this.secondsText = text;
         this.secs = secs;

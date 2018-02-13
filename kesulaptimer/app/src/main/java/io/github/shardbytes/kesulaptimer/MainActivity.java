@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView secondsTextView;
     private SeekBar secondsSeekBar;
-    private Seconds secs;
+    private SecondsPredefined secs;
     private CircleProgress cProgress;
 
     @Override
@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
         secondsTextView = findViewById(R.id.secondsTextView);
         secondsSeekBar = findViewById(R.id.secondsSeekBar);
-        secs = new Seconds();
+        cProgress = findViewById(R.id.circle_progress);
+        secs = new SecondsPredefined();
 
         secondsSeekBar.setOnSeekBarChangeListener(new SecondsSeekBarListener(secondsSeekBar, secondsTextView, secs));
 
