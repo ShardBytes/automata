@@ -1,7 +1,6 @@
 package io.github.shardbytes.kesulaptimer;
 
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 /**
  * Created by Plasmoxy on 13.02.2018.
@@ -9,23 +8,19 @@ import android.widget.TextView;
 
 public class SecondsSeekBarListener implements SeekBar.OnSeekBarChangeListener {
 
-    private SeekBar bar;
-    private TextView secondsText;
-    private SecondsPredefined secs;
+    private MainActivity activity; // reference to activity
 
     private int progressBefore;
 
-    public SecondsSeekBarListener(SeekBar bar, TextView text, SecondsPredefined secs) {
-        this.bar = bar;
-        this.secondsText = text;
-        this.secs = secs;
+    public SecondsSeekBarListener(MainActivity a) {
+        this.activity = a;
     }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         if (progress != progressBefore) {
-            secs.set(progress);
-            secondsText.setText(String.valueOf(progress) + " s");
+            activity.secondsTextView.setText(String.valueOf(progress) + " s");
+            activity.cProgress.setProgress(progress*100/120);
             progressBefore = progress;
         }
     }
