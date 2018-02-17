@@ -18,13 +18,12 @@ public class TimerButtonListener implements View.OnClickListener {
     public void onClick(View v) { // switching dependent on timer
         if (activity.timer == null) { // if no timer
 
-            int seconds = activity.secondsSeekBar.getProgress(); // linked directly to progress
-            activity.timer = new SecondsTimer(activity, seconds);
+            activity.timer = new SecondsTimer(activity, activity.presetSeconds);
             activity.timer.start();
             activity.timer.started();
 
         } else { // if there is a timer
-            activity.timer.finished();
+            activity.timer.stopped();
             activity.timer = null;
         }
     }
