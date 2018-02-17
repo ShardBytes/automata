@@ -34,6 +34,7 @@ public class SecondsTimer extends CountDownTimer {
 
     @Override
     public void onFinish() {
+        activity.alarm.start();
         activity.secondsTextView.setText("FINISHED");
         activity.timerButton.setText("REFRESH");
         activity.cProgress.setProgress(100);
@@ -45,6 +46,8 @@ public class SecondsTimer extends CountDownTimer {
     }
 
     public void stopped() {
+
+        activity.alarm.stop();
 
         activity.updateSecondsView(activity.presetSeconds);
         activity.cProgress.setProgress(0);

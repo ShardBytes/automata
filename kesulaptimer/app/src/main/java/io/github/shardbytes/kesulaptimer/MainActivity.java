@@ -1,5 +1,6 @@
 package io.github.shardbytes.kesulaptimer;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 import com.github.lzyzsd.circleprogress.CircleProgress;
 
 public class MainActivity extends AppCompatActivity {
+
+    MediaPlayer alarm;
 
     TextView secondsTextView;
     CircleProgress cProgress;
@@ -24,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // load player
+        alarm = MediaPlayer.create(this, R.raw.modernalarm);
+        alarm.setLooping(true);
 
         // link views
         secondsTextView = findViewById(R.id.secondsTextView);
