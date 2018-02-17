@@ -24,11 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
         // link views
         secondsTextView = findViewById(R.id.secondsTextView);
-        secondsSeekBar = findViewById(R.id.secondsSeekBar);
         cProgress = findViewById(R.id.circle_progress);
         timerButton = findViewById(R.id.timerButton);
-
-        secondsSeekBar.setOnSeekBarChangeListener(new SecondsSeekBarListener(this));
         timerButton.setOnClickListener(new TimerButtonListener(this));
 
     }
