@@ -62,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        alarm.stop();
+        super.onDestroy();
+    }
+
     public void updateSecondsView(long seconds) {
         long hours = seconds/60/60;
         long minutes = seconds/60 - hours*60;
