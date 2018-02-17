@@ -8,6 +8,10 @@ import android.widget.TextView;
 
 import com.github.lzyzsd.circleprogress.CircleProgress;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     MediaPlayer alarm;
@@ -18,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     Button buttonPlus, buttonPlusTen, buttonMinus, buttonMinusTen;
     Button buttonPlusMinute, buttonMinusMinute, buttonPlusFiveMinutes, buttonMinusFiveMinutes;
+
+    List<Button> modButtons;
 
     long presetSeconds = 0;
 
@@ -46,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
         buttonMinusMinute = findViewById(R.id.buttonMinusMinute);
         buttonPlusFiveMinutes = findViewById(R.id.buttonPlusFiveMinutes);
         buttonMinusFiveMinutes = findViewById(R.id.buttonMinusFiveMinutes);
+
+        // create and link to arraylist
+        modButtons = new ArrayList<>(Arrays.asList(buttonPlus, buttonPlusTen, buttonMinus, buttonMinusTen,
+                buttonPlusMinute, buttonMinusMinute, buttonPlusFiveMinutes, buttonMinusFiveMinutes));
+
+        // set tint of buttons
+        for (Button b : modButtons) {
+            
+        }
 
         // attach listeners
         timerButton.setOnClickListener(new TimerButtonListener(this));

@@ -1,6 +1,7 @@
 package io.github.shardbytes.kesulaptimer;
 
 import android.os.CountDownTimer;
+import android.widget.Button;
 
 /**
  * Created by Plasmoxy on 16.02.2018.
@@ -34,20 +35,32 @@ public class SecondsTimer extends CountDownTimer {
 
     @Override
     public void onFinish() {
-        activity.alarm.start();
+        if (!activity.alarm.isPlaying())
+            activity.alarm.start();
         activity.secondsTextView.setText("FINISHED");
         activity.timerButton.setText("REFRESH");
         activity.cProgress.setProgress(100);
     }
 
     public void started() {
+
+        for (Button b : activity.modButtons) {
+            b.setEnabled(false);
+        }
+
         activity.cProgress.setProgress(0);
         activity.timerButton.setText("STOP");
     }
 
     public void stopped() {
+        if (activity.alarm.isPlaying()) {
+            activity.alarm.pause();
+            activity.alarm.seekTo(0);
+        }
 
-        activity.alarm.stop();
+        for (Button b : activity.modButtons) {
+            b.setEnabled(true);
+        }
 
         activity.updateSecondsView(activity.presetSeconds);
         activity.cProgress.setProgress(0);
