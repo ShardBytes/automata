@@ -1,5 +1,6 @@
 package io.github.shardbytes.kesulaptimer;
 
+import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.widget.Button;
 
@@ -18,6 +19,15 @@ public class SecondsTimer extends CountDownTimer {
         this.initSeconds = seconds;
     }
 
+    private void updateProgressColor() {
+        float newHSV[] = {
+                (CustomUtil.map( activity.cProgress.getProgress(), 0, 100, 0, 359 ) + 324) % 360 ,
+                0.82f,
+                0.94f
+        }; // +324 = purple color offset
+        activity.cProgress.setFinishedColor(Color.HSVToColor(newHSV));
+    }
+
     @Override
     public void onTick(long millisUntilFinished) {
 
@@ -29,6 +39,7 @@ public class SecondsTimer extends CountDownTimer {
             // uhhh the ceil is because we humans think about it like that, it tells us what is REMAINING
             activity.updateSecondsView((int)Math.ceil(millisUntilFinished / 1000d));
             activity.cProgress.setProgress((int) (100 * (1d - complete)));
+            updateProgressColor();
             // Log.e("ERROR BITCH", "TICC = " + String.valueOf(millisUntilFinished / 1000d / initSeconds * 100));
         }
     }
@@ -40,6 +51,7 @@ public class SecondsTimer extends CountDownTimer {
         activity.secondsTextView.setText("FINISHED");
         activity.timerButton.setText("REFRESH");
         activity.cProgress.setProgress(100);
+        updateProgressColor();
     }
 
     public void started() {
@@ -49,6 +61,7 @@ public class SecondsTimer extends CountDownTimer {
         }
 
         activity.cProgress.setProgress(0);
+        updateProgressColor();
         activity.timerButton.setText("STOP");
     }
 
