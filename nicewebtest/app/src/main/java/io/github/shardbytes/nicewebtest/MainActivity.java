@@ -1,47 +1,48 @@
 package io.github.shardbytes.nicewebtest;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
 
-    public WebView web;
-
-    public static String readRawTextFile(Context ctx, int resId)
-    {
-        InputStream inputStream = ctx.getResources().openRawResource(resId);
-
-        InputStreamReader inputreader = new InputStreamReader(inputStream);
-        BufferedReader buffreader = new BufferedReader(inputreader);
-        String line;
-        StringBuilder text = new StringBuilder();
-
-        try {
-            while (( line = buffreader.readLine()) != null) {
-                text.append(line);
-                text.append('\n');
-            }
-        } catch (IOException e) {
-            return null;
-        }
-        return text.toString();
-    }
-
+    public WebView _webview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        web = findViewById(R.id.web);
+
+        _webview = (WebView) findViewById(R.id.web);
+
+        WebSettings webSettings = _webview.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setMediaPlaybackRequiresUserGesture(false);
+        webSettings.setAllowFileAccess(true);
+        webSettings.setAllowFileAccessFromFileURLs(true);
+        webSettings.setDomStorageEnabled(true);
+        //_webview.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null); // if bad background
+
+        webSettings.setAppCacheEnabled(false);
+        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+
+        _webview.setWebViewClient(new WebViewClient());
+
+        WebView.setWebContentsDebuggingEnabled(true);
+
+        _webview.loadUrl("file:///android_asset/empty.html", null);
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run()
+            {
+                _webview.loadUrl("file:///android_asset/hyper.html", null);
+            }
+        }, 500);
 
 
-        web.getSettings().setJavaScriptEnabled(true);
-        web.loadData(readRawTextFile(this, R.raw.hello), "text/html","utf-8");
+
     }
 }
