@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView secondsTextView;
     CircleProgress cProgress;
-    Button timerButton;
+    Button timerButton, nullifyButton;
 
     Button buttonPlus, buttonPlusTen, buttonMinus, buttonMinusTen;
     Button buttonPlusMinute, buttonMinusMinute, buttonPlusFiveMinutes, buttonMinusFiveMinutes;
@@ -35,13 +35,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // load player
-        alarm = MediaPlayer.create(this, R.raw.modernalarm);
+        alarm = MediaPlayer.create(this, R.raw.martintape);
         alarm.setLooping(true);
 
         // link views
         secondsTextView = findViewById(R.id.secondsTextView);
         cProgress = findViewById(R.id.circle_progress);
         timerButton = findViewById(R.id.timerButton);
+        nullifyButton = findViewById(R.id.nullifyButton);
 
         buttonPlus = findViewById(R.id.buttonPlus);
         buttonMinus = findViewById(R.id.buttonMinus);
@@ -55,15 +56,12 @@ public class MainActivity extends AppCompatActivity {
 
         // create and link to arraylist
         modButtons = new ArrayList<>(Arrays.asList(buttonPlus, buttonPlusTen, buttonMinus, buttonMinusTen,
-                buttonPlusMinute, buttonMinusMinute, buttonPlusFiveMinutes, buttonMinusFiveMinutes));
+                buttonPlusMinute, buttonMinusMinute, buttonPlusFiveMinutes, buttonMinusFiveMinutes, nullifyButton));
 
-        // set tint of buttons
-        for (Button b : modButtons) {
-
-        }
 
         // attach listeners
         timerButton.setOnClickListener(new TimerButtonListener(this));
+        nullifyButton.setOnClickListener(new NullifyButtonListener(this));
 
         buttonPlus.setOnClickListener(new ModSecondsButtonListener(this, 1));
         buttonPlusTen.setOnClickListener(new ModSecondsButtonListener(this, 10));

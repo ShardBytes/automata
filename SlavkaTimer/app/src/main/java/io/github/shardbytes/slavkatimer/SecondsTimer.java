@@ -48,8 +48,8 @@ public class SecondsTimer extends CountDownTimer {
     public void onFinish() {
         if (!activity.alarm.isPlaying())
             activity.alarm.start();
-        activity.secondsTextView.setText("FINISHED");
-        activity.timerButton.setText("REFRESH");
+        activity.secondsTextView.setText("KONIEC");
+        activity.timerButton.setText("OBNOVIŤ");
         activity.cProgress.setProgress(100);
         updateProgressColor();
     }
@@ -62,13 +62,13 @@ public class SecondsTimer extends CountDownTimer {
 
         activity.cProgress.setProgress(0);
         updateProgressColor();
-        activity.timerButton.setText("STOP");
+        activity.timerButton.setText("STOPNÚŤ");
     }
 
     public void stopped() {
         if (activity.alarm.isPlaying()) {
             activity.alarm.pause();
-            activity.alarm.seekTo(0);
+            activity.alarm.seekTo( (int)(Math.random()*5) * 2000 );
         }
 
         for (Button b : activity.modButtons) {
@@ -78,7 +78,7 @@ public class SecondsTimer extends CountDownTimer {
         activity.updateSecondsView(activity.presetSeconds);
         activity.cProgress.setProgress(0);
 
-        activity.timerButton.setText("START");
+        activity.timerButton.setText("SPUSTIŤ");
 
         activity.timer.cancel();
     }

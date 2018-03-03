@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         android:baselineAligned="false"
         android:orientation="vertical"
-        android:background="#262626"
+        android:background="@drawable/hora"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,6 @@
             android:id="@+id/secondsTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#262626"
             android:text="0 s"
             android:textAlignment="center"
             android:textColor="@android:color/white"
@@ -118,15 +117,15 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:gravity="center_vertical"
+            android:gravity="center_horizontal|center"
             android:orientation="vertical">
 
             <com.github.lzyzsd.circleprogress.CircleProgress
                 android:id="@+id/circle_progress"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="40dp"
                 android:layout_marginTop="40dp"
                 android:scaleX="2"
                 android:scaleY="2"
@@ -134,15 +133,33 @@
                 app:circle_progress="0"
                 app:circle_unfinished_color="#444" />
 
-            <Button
-                android:id="@+id/timerButton"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="40dp"
-                android:minHeight="70dp"
-                android:minWidth="200dp"
-                android:text="START" />
+                android:layout_marginTop="50px"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/nullifyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:minHeight="70dp"
+                    android:minWidth="100dp"
+                    android:text="VYNULOVAŤ" />
+
+                <Button
+                    android:id="@+id/timerButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:minHeight="70dp"
+                    android:minWidth="200dp"
+                    android:text="START" />
+            </LinearLayout>
 
         </LinearLayout>
 
