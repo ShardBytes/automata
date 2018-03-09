@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // load player
-        alarm = MediaPlayer.create(this, R.raw.martintape);
-        alarm.setLooping(true);
+        alarm = MediaPlayer.create(this, R.raw.vyborne);
+        alarm.setLooping(false);
 
         // link views
         secondsTextView = findViewById(R.id.secondsTextView);

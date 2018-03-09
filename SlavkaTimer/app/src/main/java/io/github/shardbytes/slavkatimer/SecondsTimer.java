@@ -68,7 +68,7 @@ public class SecondsTimer extends CountDownTimer {
     public void stopped() {
         if (activity.alarm.isPlaying()) {
             activity.alarm.pause();
-            activity.alarm.seekTo( (int)(Math.random()*5) * 2000 );
+            activity.alarm.seekTo(0);
         }
 
         for (Button b : activity.modButtons) {
