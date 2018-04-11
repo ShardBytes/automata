@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             public void run()
             {
-                _webview.loadUrl("file:///android_asset/hyper.html", null);
+                _webview.loadUrl("https://alightinthevoid.fr.openode.io", null);
             }
         }, 500);
 
